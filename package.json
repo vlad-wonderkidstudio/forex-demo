@@ -1,0 +1,27 @@
+{
+  "scripts": {
+    "watch": "tsc -w",
+    "start": "tsc && node src/index.js",
+    "typeorm": "./node_modules/.bin/typeorm",
+    "build": "tsc",
+    "dev-win": "set NODE_ENV=development && nodemon --watch \"src\" --ext \"ts\" --exec \"tsc -noEmit && ts-node src/index.ts\"",
+    "dev": "export NODE_ENV=development && nodemon --watch \"src\" --ext \"ts\" --exec \"tsc  -noEmit && ts-node src/index.ts\""
+  },
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "axios": "^1.7.7",
+    "express": "^4.21.1",
+    "pg": "^8.13.0",
+    "reflect-metadata": "^0.2.2",
+    "tsconfig-paths": "^4.2.0",
+    "typeorm": "^0.3.20",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.5.4"
+  }
+}

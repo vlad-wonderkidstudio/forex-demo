@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES6", // Or another ECMAScript version
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist", // Set this to your desired output directory
+    "rootDir": "./src", // Ensure this reflects the directory of your source files
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true, // Required for TypeORM
+    "sourceMap": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
