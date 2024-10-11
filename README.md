@@ -1,7 +1,7 @@
-#Simple currensy scrapper
+# Simple currensy scrapper
 Made on pure NodeJs with TypeORM
 
-#Installation
+# Installation
 
 1) Rename `.env.sample` into `.env` file
 2) Launch docker `docker compose up`
@@ -16,6 +16,6 @@ On Windows:
 On Unix-based systems:
 `npm run dev`
 
-#Note:
+# Note:
 You can see PgAdmin here:
 http://localhost:5050/browser/
