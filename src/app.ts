@@ -34,7 +34,18 @@ const nextTick = async () => {
     try {
       const newPoints = await fetchAndProcessRates(assets);
       for (const [ws, assetId] of clientSubscriptions) {
-        sendPoint(ws, newPoints[assetId]);
+        if (ws.isAlive === false) {
+          ws.terminate();
+          continue;
+        }
+
+        sendPoint(ws, newPoints[assetId])
+          .catch((error) => {
+            console.error("Error sending point: ", error);
+          });
+
+        ws.isAlive = false;
+        ws.ping();
       }
     } catch (error) {
       console.error("Error fetching and processing rates:", error);

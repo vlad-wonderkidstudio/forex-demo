@@ -11,6 +11,7 @@ export function setupHandlers(wss: WebSocketServer) {
 
   wss.on("connection", (ws: WebSocket) => {
     console.info("Client connected");
+    ws.isAlive = true;
 
     ws.on("message", (message: string) =>
       handleClientMessage(ws, message, clientSubscriptions)
@@ -19,6 +20,10 @@ export function setupHandlers(wss: WebSocketServer) {
     ws.on("close", () => {
       console.info("Client disconnected");
       clientSubscriptions.delete(ws);
+    });
+
+    ws.on("pong", () => {
+      ws.isAlive = true;
     });
   });
 
@@ -36,10 +41,10 @@ async function handleClientMessage(
 
     switch (data.action) {
       case "assets":
-        doAssetsAction(ws, data.message);
+        await doAssetsAction(ws, data.message);
         break;
       case "subscribe":
-        doSubscribeAction(ws, data.message, clientSubscriptions);
+        await doSubscribeAction(ws, data.message, clientSubscriptions);
         break;
     }
   } catch (error) {

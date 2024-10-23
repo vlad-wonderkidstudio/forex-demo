@@ -1,3 +1,4 @@
+import { WebSocket } from "ws";
 import { Point } from "../entity/Point";
 
 export type OutputPoint = {
